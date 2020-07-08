@@ -79,6 +79,26 @@ module "sg" {
   tag_name = "multi_port_access"
 }
 
+module "IAM" {
+  source = "./IAM"
+  iam_name = "AWSResourcePolicies"
+  iam_desc = "aws_iam_role provision"
+}
+
+module "iam_policy_1" {
+    source = "./IAM/POLICY_ATTACH"
+    iam_pol_role = "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+    iam_pol_arn = module.iam.arn
+  }
+
+module "iam_policy_1" {
+    source = "./IAM/POLICY_ATTACH"
+    iam_pol_role = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+    iam_pol_arn = module.iam.arn
+  }
+
+
+
 module "mysql_rds" {
   source         = "./RDS"
   instance_name  = "petclinic"
