@@ -91,12 +91,17 @@ module "iam_policy_1" {
     iam_pol_arn = module.iam.arn
   }
 
-module "iam_policy_1" {
+module "iam_policy_2" {
     source = "./IAM/POLICY_ATTACH"
     iam_pol_role = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
     iam_pol_arn = module.iam.arn
   }
 
+module "iam_policy_3" {
+    source = "./IAM/POLICY_ATTACH"
+    iam_pol_role = "arn:aws:iam::aws:policy/IAMFullAccess"
+    iam_pol_arn = module.iam.arn
+  }
 
 
 module "mysql_rds" {
